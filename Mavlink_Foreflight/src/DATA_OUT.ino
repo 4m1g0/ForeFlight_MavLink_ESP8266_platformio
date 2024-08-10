@@ -28,7 +28,7 @@ float Global_True_Heading;
 
 void outATT(void) {
   String att = String("XATT mRo," + String(Global_True_Heading, 1) + "," + String(Global_Pitch, 1) + "," + String(Global_Roll, 1) + " ");
-  //Serial.println(att);
+  //erial.println(att);
   UDPClient.beginPacket(Global_IP, 49002);
   //UDPClient.beginPacketMulticast(broadcastAddress, 49002, WiFi.softAPIP(), 1);
   UDPClient.print(att);
@@ -39,7 +39,7 @@ void outATT(void) {
 
 void outGPS(void) {
   String GPS = String("XGPS mRo," + String(Global_Lon / (float)100000, 4) + "," + String(Global_Lat / (float)100000, 4) + "," + String(Global_Alt, 1) + "," + String(Global_Ground_Track, 1) + "," + String(Global_Ground_Speed, 1) + " ");
-  //Serial.println(GPS);
+  //println(GPS);
   UDPClient.beginPacket(Global_IP, 49002);
   //UDPClient.beginPacketMulticast(broadcastAddress, 49002, WiFi.softAPIP(), 1);
   UDPClient.print(GPS);

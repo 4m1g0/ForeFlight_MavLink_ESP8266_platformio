@@ -3,19 +3,19 @@
 
 #define MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4 172
 
-MAVPACKED(
+
 typedef struct __mavlink_serial_udb_extra_f4_t {
- uint8_t sue_ROLL_STABILIZATION_AILERONS; /*< Serial UDB Extra Roll Stabilization with Ailerons Enabled*/
- uint8_t sue_ROLL_STABILIZATION_RUDDER; /*< Serial UDB Extra Roll Stabilization with Rudder Enabled*/
- uint8_t sue_PITCH_STABILIZATION; /*< Serial UDB Extra Pitch Stabilization Enabled*/
- uint8_t sue_YAW_STABILIZATION_RUDDER; /*< Serial UDB Extra Yaw Stabilization using Rudder Enabled*/
- uint8_t sue_YAW_STABILIZATION_AILERON; /*< Serial UDB Extra Yaw Stabilization using Ailerons Enabled*/
- uint8_t sue_AILERON_NAVIGATION; /*< Serial UDB Extra Navigation with Ailerons Enabled*/
- uint8_t sue_RUDDER_NAVIGATION; /*< Serial UDB Extra Navigation with Rudder Enabled*/
- uint8_t sue_ALTITUDEHOLD_STABILIZED; /*< Serial UDB Extra Type of Alitude Hold when in Stabilized Mode*/
- uint8_t sue_ALTITUDEHOLD_WAYPOINT; /*< Serial UDB Extra Type of Alitude Hold when in Waypoint Mode*/
- uint8_t sue_RACING_MODE; /*< Serial UDB Extra Firmware racing mode enabled*/
-}) mavlink_serial_udb_extra_f4_t;
+ uint8_t sue_ROLL_STABILIZATION_AILERONS; /*<  Serial UDB Extra Roll Stabilization with Ailerons Enabled*/
+ uint8_t sue_ROLL_STABILIZATION_RUDDER; /*<  Serial UDB Extra Roll Stabilization with Rudder Enabled*/
+ uint8_t sue_PITCH_STABILIZATION; /*<  Serial UDB Extra Pitch Stabilization Enabled*/
+ uint8_t sue_YAW_STABILIZATION_RUDDER; /*<  Serial UDB Extra Yaw Stabilization using Rudder Enabled*/
+ uint8_t sue_YAW_STABILIZATION_AILERON; /*<  Serial UDB Extra Yaw Stabilization using Ailerons Enabled*/
+ uint8_t sue_AILERON_NAVIGATION; /*<  Serial UDB Extra Navigation with Ailerons Enabled*/
+ uint8_t sue_RUDDER_NAVIGATION; /*<  Serial UDB Extra Navigation with Rudder Enabled*/
+ uint8_t sue_ALTITUDEHOLD_STABILIZED; /*<  Serial UDB Extra Type of Alitude Hold when in Stabilized Mode*/
+ uint8_t sue_ALTITUDEHOLD_WAYPOINT; /*<  Serial UDB Extra Type of Alitude Hold when in Waypoint Mode*/
+ uint8_t sue_RACING_MODE; /*<  Serial UDB Extra Firmware racing mode enabled*/
+} mavlink_serial_udb_extra_f4_t;
 
 #define MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_LEN 10
 #define MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_MIN_LEN 10
@@ -68,16 +68,16 @@ typedef struct __mavlink_serial_udb_extra_f4_t {
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param msg The MAVLink message to compress the data into
  *
- * @param sue_ROLL_STABILIZATION_AILERONS Serial UDB Extra Roll Stabilization with Ailerons Enabled
- * @param sue_ROLL_STABILIZATION_RUDDER Serial UDB Extra Roll Stabilization with Rudder Enabled
- * @param sue_PITCH_STABILIZATION Serial UDB Extra Pitch Stabilization Enabled
- * @param sue_YAW_STABILIZATION_RUDDER Serial UDB Extra Yaw Stabilization using Rudder Enabled
- * @param sue_YAW_STABILIZATION_AILERON Serial UDB Extra Yaw Stabilization using Ailerons Enabled
- * @param sue_AILERON_NAVIGATION Serial UDB Extra Navigation with Ailerons Enabled
- * @param sue_RUDDER_NAVIGATION Serial UDB Extra Navigation with Rudder Enabled
- * @param sue_ALTITUDEHOLD_STABILIZED Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
- * @param sue_ALTITUDEHOLD_WAYPOINT Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
- * @param sue_RACING_MODE Serial UDB Extra Firmware racing mode enabled
+ * @param sue_ROLL_STABILIZATION_AILERONS  Serial UDB Extra Roll Stabilization with Ailerons Enabled
+ * @param sue_ROLL_STABILIZATION_RUDDER  Serial UDB Extra Roll Stabilization with Rudder Enabled
+ * @param sue_PITCH_STABILIZATION  Serial UDB Extra Pitch Stabilization Enabled
+ * @param sue_YAW_STABILIZATION_RUDDER  Serial UDB Extra Yaw Stabilization using Rudder Enabled
+ * @param sue_YAW_STABILIZATION_AILERON  Serial UDB Extra Yaw Stabilization using Ailerons Enabled
+ * @param sue_AILERON_NAVIGATION  Serial UDB Extra Navigation with Ailerons Enabled
+ * @param sue_RUDDER_NAVIGATION  Serial UDB Extra Navigation with Rudder Enabled
+ * @param sue_ALTITUDEHOLD_STABILIZED  Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
+ * @param sue_ALTITUDEHOLD_WAYPOINT  Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
+ * @param sue_RACING_MODE  Serial UDB Extra Firmware racing mode enabled
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_serial_udb_extra_f4_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
@@ -118,21 +118,81 @@ static inline uint16_t mavlink_msg_serial_udb_extra_f4_pack(uint8_t system_id, u
 }
 
 /**
+ * @brief Pack a serial_udb_extra_f4 message
+ * @param system_id ID of this system
+ * @param component_id ID of this component (e.g. 200 for IMU)
+ * @param status MAVLink status structure
+ * @param msg The MAVLink message to compress the data into
+ *
+ * @param sue_ROLL_STABILIZATION_AILERONS  Serial UDB Extra Roll Stabilization with Ailerons Enabled
+ * @param sue_ROLL_STABILIZATION_RUDDER  Serial UDB Extra Roll Stabilization with Rudder Enabled
+ * @param sue_PITCH_STABILIZATION  Serial UDB Extra Pitch Stabilization Enabled
+ * @param sue_YAW_STABILIZATION_RUDDER  Serial UDB Extra Yaw Stabilization using Rudder Enabled
+ * @param sue_YAW_STABILIZATION_AILERON  Serial UDB Extra Yaw Stabilization using Ailerons Enabled
+ * @param sue_AILERON_NAVIGATION  Serial UDB Extra Navigation with Ailerons Enabled
+ * @param sue_RUDDER_NAVIGATION  Serial UDB Extra Navigation with Rudder Enabled
+ * @param sue_ALTITUDEHOLD_STABILIZED  Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
+ * @param sue_ALTITUDEHOLD_WAYPOINT  Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
+ * @param sue_RACING_MODE  Serial UDB Extra Firmware racing mode enabled
+ * @return length of the message in bytes (excluding serial stream start sign)
+ */
+static inline uint16_t mavlink_msg_serial_udb_extra_f4_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
+                               uint8_t sue_ROLL_STABILIZATION_AILERONS, uint8_t sue_ROLL_STABILIZATION_RUDDER, uint8_t sue_PITCH_STABILIZATION, uint8_t sue_YAW_STABILIZATION_RUDDER, uint8_t sue_YAW_STABILIZATION_AILERON, uint8_t sue_AILERON_NAVIGATION, uint8_t sue_RUDDER_NAVIGATION, uint8_t sue_ALTITUDEHOLD_STABILIZED, uint8_t sue_ALTITUDEHOLD_WAYPOINT, uint8_t sue_RACING_MODE)
+{
+#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    char buf[MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_LEN];
+    _mav_put_uint8_t(buf, 0, sue_ROLL_STABILIZATION_AILERONS);
+    _mav_put_uint8_t(buf, 1, sue_ROLL_STABILIZATION_RUDDER);
+    _mav_put_uint8_t(buf, 2, sue_PITCH_STABILIZATION);
+    _mav_put_uint8_t(buf, 3, sue_YAW_STABILIZATION_RUDDER);
+    _mav_put_uint8_t(buf, 4, sue_YAW_STABILIZATION_AILERON);
+    _mav_put_uint8_t(buf, 5, sue_AILERON_NAVIGATION);
+    _mav_put_uint8_t(buf, 6, sue_RUDDER_NAVIGATION);
+    _mav_put_uint8_t(buf, 7, sue_ALTITUDEHOLD_STABILIZED);
+    _mav_put_uint8_t(buf, 8, sue_ALTITUDEHOLD_WAYPOINT);
+    _mav_put_uint8_t(buf, 9, sue_RACING_MODE);
+
+        memcpy(_MAV_PAYLOAD_NON_CONST(msg), buf, MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_LEN);
+#else
+    mavlink_serial_udb_extra_f4_t packet;
+    packet.sue_ROLL_STABILIZATION_AILERONS = sue_ROLL_STABILIZATION_AILERONS;
+    packet.sue_ROLL_STABILIZATION_RUDDER = sue_ROLL_STABILIZATION_RUDDER;
+    packet.sue_PITCH_STABILIZATION = sue_PITCH_STABILIZATION;
+    packet.sue_YAW_STABILIZATION_RUDDER = sue_YAW_STABILIZATION_RUDDER;
+    packet.sue_YAW_STABILIZATION_AILERON = sue_YAW_STABILIZATION_AILERON;
+    packet.sue_AILERON_NAVIGATION = sue_AILERON_NAVIGATION;
+    packet.sue_RUDDER_NAVIGATION = sue_RUDDER_NAVIGATION;
+    packet.sue_ALTITUDEHOLD_STABILIZED = sue_ALTITUDEHOLD_STABILIZED;
+    packet.sue_ALTITUDEHOLD_WAYPOINT = sue_ALTITUDEHOLD_WAYPOINT;
+    packet.sue_RACING_MODE = sue_RACING_MODE;
+
+        memcpy(_MAV_PAYLOAD_NON_CONST(msg), &packet, MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_LEN);
+#endif
+
+    msg->msgid = MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4;
+#if MAVLINK_CRC_EXTRA
+    return mavlink_finalize_message_buffer(msg, system_id, component_id, _status, MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_MIN_LEN, MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_LEN, MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_CRC);
+#else
+    return mavlink_finalize_message_buffer(msg, system_id, component_id, _status, MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_MIN_LEN, MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_LEN);
+#endif
+}
+
+/**
  * @brief Pack a serial_udb_extra_f4 message on a channel
  * @param system_id ID of this system
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param chan The MAVLink channel this message will be sent over
  * @param msg The MAVLink message to compress the data into
- * @param sue_ROLL_STABILIZATION_AILERONS Serial UDB Extra Roll Stabilization with Ailerons Enabled
- * @param sue_ROLL_STABILIZATION_RUDDER Serial UDB Extra Roll Stabilization with Rudder Enabled
- * @param sue_PITCH_STABILIZATION Serial UDB Extra Pitch Stabilization Enabled
- * @param sue_YAW_STABILIZATION_RUDDER Serial UDB Extra Yaw Stabilization using Rudder Enabled
- * @param sue_YAW_STABILIZATION_AILERON Serial UDB Extra Yaw Stabilization using Ailerons Enabled
- * @param sue_AILERON_NAVIGATION Serial UDB Extra Navigation with Ailerons Enabled
- * @param sue_RUDDER_NAVIGATION Serial UDB Extra Navigation with Rudder Enabled
- * @param sue_ALTITUDEHOLD_STABILIZED Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
- * @param sue_ALTITUDEHOLD_WAYPOINT Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
- * @param sue_RACING_MODE Serial UDB Extra Firmware racing mode enabled
+ * @param sue_ROLL_STABILIZATION_AILERONS  Serial UDB Extra Roll Stabilization with Ailerons Enabled
+ * @param sue_ROLL_STABILIZATION_RUDDER  Serial UDB Extra Roll Stabilization with Rudder Enabled
+ * @param sue_PITCH_STABILIZATION  Serial UDB Extra Pitch Stabilization Enabled
+ * @param sue_YAW_STABILIZATION_RUDDER  Serial UDB Extra Yaw Stabilization using Rudder Enabled
+ * @param sue_YAW_STABILIZATION_AILERON  Serial UDB Extra Yaw Stabilization using Ailerons Enabled
+ * @param sue_AILERON_NAVIGATION  Serial UDB Extra Navigation with Ailerons Enabled
+ * @param sue_RUDDER_NAVIGATION  Serial UDB Extra Navigation with Rudder Enabled
+ * @param sue_ALTITUDEHOLD_STABILIZED  Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
+ * @param sue_ALTITUDEHOLD_WAYPOINT  Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
+ * @param sue_RACING_MODE  Serial UDB Extra Firmware racing mode enabled
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_serial_udb_extra_f4_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
@@ -201,19 +261,33 @@ static inline uint16_t mavlink_msg_serial_udb_extra_f4_encode_chan(uint8_t syste
 }
 
 /**
+ * @brief Encode a serial_udb_extra_f4 struct with provided status structure
+ *
+ * @param system_id ID of this system
+ * @param component_id ID of this component (e.g. 200 for IMU)
+ * @param status MAVLink status structure
+ * @param msg The MAVLink message to compress the data into
+ * @param serial_udb_extra_f4 C-struct to read the message contents from
+ */
+static inline uint16_t mavlink_msg_serial_udb_extra_f4_encode_status(uint8_t system_id, uint8_t component_id, mavlink_status_t* _status, mavlink_message_t* msg, const mavlink_serial_udb_extra_f4_t* serial_udb_extra_f4)
+{
+    return mavlink_msg_serial_udb_extra_f4_pack_status(system_id, component_id, _status, msg,  serial_udb_extra_f4->sue_ROLL_STABILIZATION_AILERONS, serial_udb_extra_f4->sue_ROLL_STABILIZATION_RUDDER, serial_udb_extra_f4->sue_PITCH_STABILIZATION, serial_udb_extra_f4->sue_YAW_STABILIZATION_RUDDER, serial_udb_extra_f4->sue_YAW_STABILIZATION_AILERON, serial_udb_extra_f4->sue_AILERON_NAVIGATION, serial_udb_extra_f4->sue_RUDDER_NAVIGATION, serial_udb_extra_f4->sue_ALTITUDEHOLD_STABILIZED, serial_udb_extra_f4->sue_ALTITUDEHOLD_WAYPOINT, serial_udb_extra_f4->sue_RACING_MODE);
+}
+
+/**
  * @brief Send a serial_udb_extra_f4 message
  * @param chan MAVLink channel to send the message
  *
- * @param sue_ROLL_STABILIZATION_AILERONS Serial UDB Extra Roll Stabilization with Ailerons Enabled
- * @param sue_ROLL_STABILIZATION_RUDDER Serial UDB Extra Roll Stabilization with Rudder Enabled
- * @param sue_PITCH_STABILIZATION Serial UDB Extra Pitch Stabilization Enabled
- * @param sue_YAW_STABILIZATION_RUDDER Serial UDB Extra Yaw Stabilization using Rudder Enabled
- * @param sue_YAW_STABILIZATION_AILERON Serial UDB Extra Yaw Stabilization using Ailerons Enabled
- * @param sue_AILERON_NAVIGATION Serial UDB Extra Navigation with Ailerons Enabled
- * @param sue_RUDDER_NAVIGATION Serial UDB Extra Navigation with Rudder Enabled
- * @param sue_ALTITUDEHOLD_STABILIZED Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
- * @param sue_ALTITUDEHOLD_WAYPOINT Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
- * @param sue_RACING_MODE Serial UDB Extra Firmware racing mode enabled
+ * @param sue_ROLL_STABILIZATION_AILERONS  Serial UDB Extra Roll Stabilization with Ailerons Enabled
+ * @param sue_ROLL_STABILIZATION_RUDDER  Serial UDB Extra Roll Stabilization with Rudder Enabled
+ * @param sue_PITCH_STABILIZATION  Serial UDB Extra Pitch Stabilization Enabled
+ * @param sue_YAW_STABILIZATION_RUDDER  Serial UDB Extra Yaw Stabilization using Rudder Enabled
+ * @param sue_YAW_STABILIZATION_AILERON  Serial UDB Extra Yaw Stabilization using Ailerons Enabled
+ * @param sue_AILERON_NAVIGATION  Serial UDB Extra Navigation with Ailerons Enabled
+ * @param sue_RUDDER_NAVIGATION  Serial UDB Extra Navigation with Rudder Enabled
+ * @param sue_ALTITUDEHOLD_STABILIZED  Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
+ * @param sue_ALTITUDEHOLD_WAYPOINT  Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
+ * @param sue_RACING_MODE  Serial UDB Extra Firmware racing mode enabled
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
@@ -266,7 +340,7 @@ static inline void mavlink_msg_serial_udb_extra_f4_send_struct(mavlink_channel_t
 
 #if MAVLINK_MSG_ID_SERIAL_UDB_EXTRA_F4_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an
@@ -314,7 +388,7 @@ static inline void mavlink_msg_serial_udb_extra_f4_send_buf(mavlink_message_t *m
 /**
  * @brief Get field sue_ROLL_STABILIZATION_AILERONS from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Roll Stabilization with Ailerons Enabled
+ * @return  Serial UDB Extra Roll Stabilization with Ailerons Enabled
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_ROLL_STABILIZATION_AILERONS(const mavlink_message_t* msg)
 {
@@ -324,7 +398,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_ROLL_STABILIZATION
 /**
  * @brief Get field sue_ROLL_STABILIZATION_RUDDER from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Roll Stabilization with Rudder Enabled
+ * @return  Serial UDB Extra Roll Stabilization with Rudder Enabled
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_ROLL_STABILIZATION_RUDDER(const mavlink_message_t* msg)
 {
@@ -334,7 +408,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_ROLL_STABILIZATION
 /**
  * @brief Get field sue_PITCH_STABILIZATION from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Pitch Stabilization Enabled
+ * @return  Serial UDB Extra Pitch Stabilization Enabled
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_PITCH_STABILIZATION(const mavlink_message_t* msg)
 {
@@ -344,7 +418,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_PITCH_STABILIZATIO
 /**
  * @brief Get field sue_YAW_STABILIZATION_RUDDER from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Yaw Stabilization using Rudder Enabled
+ * @return  Serial UDB Extra Yaw Stabilization using Rudder Enabled
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_YAW_STABILIZATION_RUDDER(const mavlink_message_t* msg)
 {
@@ -354,7 +428,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_YAW_STABILIZATION_
 /**
  * @brief Get field sue_YAW_STABILIZATION_AILERON from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Yaw Stabilization using Ailerons Enabled
+ * @return  Serial UDB Extra Yaw Stabilization using Ailerons Enabled
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_YAW_STABILIZATION_AILERON(const mavlink_message_t* msg)
 {
@@ -364,7 +438,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_YAW_STABILIZATION_
 /**
  * @brief Get field sue_AILERON_NAVIGATION from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Navigation with Ailerons Enabled
+ * @return  Serial UDB Extra Navigation with Ailerons Enabled
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_AILERON_NAVIGATION(const mavlink_message_t* msg)
 {
@@ -374,7 +448,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_AILERON_NAVIGATION
 /**
  * @brief Get field sue_RUDDER_NAVIGATION from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Navigation with Rudder Enabled
+ * @return  Serial UDB Extra Navigation with Rudder Enabled
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_RUDDER_NAVIGATION(const mavlink_message_t* msg)
 {
@@ -384,7 +458,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_RUDDER_NAVIGATION(
 /**
  * @brief Get field sue_ALTITUDEHOLD_STABILIZED from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
+ * @return  Serial UDB Extra Type of Alitude Hold when in Stabilized Mode
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_ALTITUDEHOLD_STABILIZED(const mavlink_message_t* msg)
 {
@@ -394,7 +468,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_ALTITUDEHOLD_STABI
 /**
  * @brief Get field sue_ALTITUDEHOLD_WAYPOINT from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
+ * @return  Serial UDB Extra Type of Alitude Hold when in Waypoint Mode
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_ALTITUDEHOLD_WAYPOINT(const mavlink_message_t* msg)
 {
@@ -404,7 +478,7 @@ static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_ALTITUDEHOLD_WAYPO
 /**
  * @brief Get field sue_RACING_MODE from serial_udb_extra_f4 message
  *
- * @return Serial UDB Extra Firmware racing mode enabled
+ * @return  Serial UDB Extra Firmware racing mode enabled
  */
 static inline uint8_t mavlink_msg_serial_udb_extra_f4_get_sue_RACING_MODE(const mavlink_message_t* msg)
 {

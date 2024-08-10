@@ -43,8 +43,8 @@ void heartBeat(void) {
   mavlink_msg_heartbeat_pack(sysid, compid, &msg_temp, type, autopilot_type, system_mode, custom_mode, system_state);
   // Copy the message to the send buffer
   uint16_t len = mavlink_msg_to_send_buffer(buf2, &msg_temp);
-  Serial.write(buf2, len);
-  Serial.println("@"); //<---Just to ID the message, you can delete this.
+  arduSerial.write(buf2, len);
+  arduSerial.println("@"); //<---Just to ID the message, you can delete this.
 }
 
 /*********************************************************
@@ -68,7 +68,7 @@ void start_feeds(void) {
     delay(100);
     mavlink_msg_request_data_stream_pack(0xFF, 0xBE, &msg_feed, target_sysid, target_component, MAV_DATA_STREAM_RAW_SENSORS, MAV_RATE_STREAM_RAW_SENSORS, 1);
     len = mavlink_msg_to_send_buffer(buf2, &msg_feed);
-    Serial.write(buf2, len);
+    arduSerial.write(buf2, len);
   }
 
   if (MAV_RATE_STREAM_EXTRA1 >= 1) {
@@ -76,21 +76,21 @@ void start_feeds(void) {
     delay(100);
     mavlink_msg_request_data_stream_pack(0xFF, 0xBE, &msg_feed, target_sysid, target_component, MAV_DATA_STREAM_EXTRA1, MAV_RATE_STREAM_EXTRA1, 1);
     len = mavlink_msg_to_send_buffer(buf2, &msg_feed);
-    Serial.write(buf2, len);
+    arduSerial.write(buf2, len);
   }
 
   if (MAV_RATE_STREAM_EXTRA2 >= 1) {
     delay(100);
     mavlink_msg_request_data_stream_pack(0xFF, 0xBE, &msg_feed, target_sysid, target_component, MAV_DATA_STREAM_EXTRA2, MAV_RATE_STREAM_EXTRA2, 1);
     len = mavlink_msg_to_send_buffer(buf2, &msg_feed);
-    Serial.write(buf2, len);
+    arduSerial.write(buf2, len);
   }
 
   if (MAV_RATE_STREAM_EXTENDED_STATUS >= 1) {
     delay(100);
     mavlink_msg_request_data_stream_pack(0xFF, 0xBE, &msg_feed, target_sysid, target_component, MAV_DATA_STREAM_EXTENDED_STATUS, MAV_RATE_STREAM_EXTENDED_STATUS, 1);
     len = mavlink_msg_to_send_buffer(buf2, &msg_feed);
-    Serial.write(buf2, len);
+    arduSerial.write(buf2, len);
   }
 
 
@@ -98,21 +98,21 @@ void start_feeds(void) {
     delay(100);
     mavlink_msg_request_data_stream_pack(0xFF, 0xBE, &msg_feed, target_sysid, target_component, MAV_DATA_STREAM_RAW_CONTROLLER, MAV_RATE_STREAM_RAW_CONTROLLER, 1);
     len = mavlink_msg_to_send_buffer(buf2, &msg_feed);
-    Serial.write(buf2, len);
+    arduSerial.write(buf2, len);
   }
 
   if (MAV_RATE_STREAM_POSITION >= 1) {
     delay(100);
     mavlink_msg_request_data_stream_pack(0xFF, 0xBE, &msg_feed, target_sysid, target_component, MAV_DATA_STREAM_POSITION, MAV_RATE_STREAM_POSITION, 1);
     len = mavlink_msg_to_send_buffer(buf2, &msg_feed);
-    Serial.write(buf2, len);
+    arduSerial.write(buf2, len);
   }
 
   if (MAV_RATE_STREAM_RC_CHANNELS >= 1) {
     delay(100);
     mavlink_msg_request_data_stream_pack(0xFF, 0xBE, &msg_feed, target_sysid, target_component, MAV_DATA_STREAM_RC_CHANNELS, MAV_RATE_STREAM_RC_CHANNELS, 1);
     len = mavlink_msg_to_send_buffer(buf2, &msg_feed);
-    Serial.write(buf2, len);
+    arduSerial.write(buf2, len);
   }
 
 }
@@ -121,9 +121,9 @@ void start_feeds(void) {
 
 void comm_receive() {
 
-  while (Serial.available() > 0 )
+  while (arduSerial.available() > 0 )
   {
-    uint8_t c = Serial.read(); //Getting one byte from the MavLink stream.
+    uint8_t c = arduSerial.read(); //Getting one byte from the MavLink stream.
     //Serial.print(" 0x"); Serial.print(c,HEX);
     // Try to get a new message
     if (mavlink_parse_char(1, c, &msg, &status1)) {
@@ -132,12 +132,12 @@ void comm_receive() {
       {
         case MAVLINK_MSG_ID_HEARTBEAT: //#0
           {
-            //SerialUSB.print("Received Heartbeat ---> ");
+            Serial.print("Received Heartbeat ---> ");
 
             mavlink_heartbeat_t test;
             mavlink_msg_heartbeat_decode(&msg, &test);
-            //SerialUSB.print(" Autopilot: "); SerialUSB.print(test.autopilot); //implementation example is inside //c_library_v1/common/mavlink_msg_heartbeat.h
-            //SerialUSB.print(" Type: "); SerialUSB.println(test.type);
+            Serial.print(" Autopilot: "); Serial.print(test.autopilot); //implementation example is inside //c_library_v1/common/mavlink_msg_heartbeat.h
+            Serial.print(" Type: "); Serial.println(test.type);
           }
           break;
         case MAVLINK_MSG_ID_RAW_IMU: //#27
@@ -184,9 +184,9 @@ void comm_receive() {
               @param pitchspeed Pitch angular speed (rad/s)
               @param yawspeed Yaw angular speed (rad/s)
             * */
-            //SerialUSB.print(" Pitch ---> "); SerialUSB.println(mavlink_msg_attitude_get_pitch(&msg) * 57.2958f);
-            //SerialUSB.print(" Roll ---> "); SerialUSB.println(mavlink_msg_attitude_get_roll(&msg) * 57.2958f);
-            //SerialUSB.print(" Yaw ---> "); SerialUSB.println(mavlink_msg_attitude_get_yaw(&msg) * 57.2958f);
+            Serial.print(" Pitch ---> "); Serial.println(mavlink_msg_attitude_get_pitch(&msg) * 57.2958f);
+            Serial.print(" Roll ---> "); Serial.println(mavlink_msg_attitude_get_roll(&msg) * 57.2958f);
+            Serial.print(" Yaw ---> "); Serial.println(mavlink_msg_attitude_get_yaw(&msg) * 57.2958f);
             Global_Pitch = (float)mavlink_msg_attitude_get_pitch(&msg) * 57.2958f;
             Global_Roll = (float)mavlink_msg_attitude_get_roll(&msg) * 57.2958f;
             Global_True_Heading = (float)mavlink_msg_attitude_get_yaw(&msg) * 57.2958f;
@@ -207,8 +207,8 @@ void comm_receive() {
               @param hdg Vehicle heading (yaw angle) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX
             */
 
-            //SerialUSB.print(" Lat ---> "); SerialUSB.println(mavlink_msg_global_position_int_get_lat(&msg));
-            //SerialUSB.print(" Lon ---> "); SerialUSB.println(mavlink_msg_global_position_int_get_lon(&msg));
+            Serial.print(" Lat ---> "); Serial.println(mavlink_msg_global_position_int_get_lat(&msg));
+            Serial.print(" Lon ---> "); Serial.println(mavlink_msg_global_position_int_get_lon(&msg));
             Global_Lat = (float)mavlink_msg_global_position_int_get_lat(&msg) / (float)100.00;
             Global_Lon = (float)mavlink_msg_global_position_int_get_lon(&msg) / (float)100.00;
             Global_Alt = (float)mavlink_msg_global_position_int_get_alt(&msg) / (float)1000.00;
@@ -219,7 +219,7 @@ void comm_receive() {
         case MAVLINK_MSG_ID_REQUEST_DATA_STREAM: //#66
           {
 
-            SerialUSB.print("REQUEST_DATA_STREAM ---> "); //SerialUSB.println(mavlink_msg_attitude_get_pitch(&msg));
+            Serial.print("REQUEST_DATA_STREAM ---> "); //SerialUSB.println(mavlink_msg_attitude_get_pitch(&msg));
           }
           break;
         case MAVLINK_MSG_ID_VFR_HUD: //#74
@@ -265,12 +265,12 @@ void comm_receive() {
             char statusText[50];
             mavlink_msg_statustext_get_text(&msg, statusText);
 
-            SerialUSB.print("STATUS ---> "); SerialUSB.write(statusText); SerialUSB.println("");
+            Serial.print("STATUS ---> "); Serial.write(statusText); Serial.println("");
 
           }
           break;
         default:
-          SerialUSB.print("Received Not Supported Msg ID --> "); SerialUSB.println(msg.msgid);
+          Serial.print("Received Not Supported Msg ID --> "); Serial.println(msg.msgid);
           break;
       }
     }

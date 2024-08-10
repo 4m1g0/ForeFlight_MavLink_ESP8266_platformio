@@ -3,11 +3,11 @@
 
 #define MAVLINK_MSG_ID_FLEXIFUNCTION_SET 150
 
-MAVPACKED(
+
 typedef struct __mavlink_flexifunction_set_t {
- uint8_t target_system; /*< System ID*/
- uint8_t target_component; /*< Component ID*/
-}) mavlink_flexifunction_set_t;
+ uint8_t target_system; /*<  System ID*/
+ uint8_t target_component; /*<  Component ID*/
+} mavlink_flexifunction_set_t;
 
 #define MAVLINK_MSG_ID_FLEXIFUNCTION_SET_LEN 2
 #define MAVLINK_MSG_ID_FLEXIFUNCTION_SET_MIN_LEN 2
@@ -44,8 +44,8 @@ typedef struct __mavlink_flexifunction_set_t {
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param msg The MAVLink message to compress the data into
  *
- * @param target_system System ID
- * @param target_component Component ID
+ * @param target_system  System ID
+ * @param target_component  Component ID
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_flexifunction_set_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
@@ -70,13 +70,49 @@ static inline uint16_t mavlink_msg_flexifunction_set_pack(uint8_t system_id, uin
 }
 
 /**
+ * @brief Pack a flexifunction_set message
+ * @param system_id ID of this system
+ * @param component_id ID of this component (e.g. 200 for IMU)
+ * @param status MAVLink status structure
+ * @param msg The MAVLink message to compress the data into
+ *
+ * @param target_system  System ID
+ * @param target_component  Component ID
+ * @return length of the message in bytes (excluding serial stream start sign)
+ */
+static inline uint16_t mavlink_msg_flexifunction_set_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
+                               uint8_t target_system, uint8_t target_component)
+{
+#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    char buf[MAVLINK_MSG_ID_FLEXIFUNCTION_SET_LEN];
+    _mav_put_uint8_t(buf, 0, target_system);
+    _mav_put_uint8_t(buf, 1, target_component);
+
+        memcpy(_MAV_PAYLOAD_NON_CONST(msg), buf, MAVLINK_MSG_ID_FLEXIFUNCTION_SET_LEN);
+#else
+    mavlink_flexifunction_set_t packet;
+    packet.target_system = target_system;
+    packet.target_component = target_component;
+
+        memcpy(_MAV_PAYLOAD_NON_CONST(msg), &packet, MAVLINK_MSG_ID_FLEXIFUNCTION_SET_LEN);
+#endif
+
+    msg->msgid = MAVLINK_MSG_ID_FLEXIFUNCTION_SET;
+#if MAVLINK_CRC_EXTRA
+    return mavlink_finalize_message_buffer(msg, system_id, component_id, _status, MAVLINK_MSG_ID_FLEXIFUNCTION_SET_MIN_LEN, MAVLINK_MSG_ID_FLEXIFUNCTION_SET_LEN, MAVLINK_MSG_ID_FLEXIFUNCTION_SET_CRC);
+#else
+    return mavlink_finalize_message_buffer(msg, system_id, component_id, _status, MAVLINK_MSG_ID_FLEXIFUNCTION_SET_MIN_LEN, MAVLINK_MSG_ID_FLEXIFUNCTION_SET_LEN);
+#endif
+}
+
+/**
  * @brief Pack a flexifunction_set message on a channel
  * @param system_id ID of this system
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param chan The MAVLink channel this message will be sent over
  * @param msg The MAVLink message to compress the data into
- * @param target_system System ID
- * @param target_component Component ID
+ * @param target_system  System ID
+ * @param target_component  Component ID
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_flexifunction_set_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
@@ -129,11 +165,25 @@ static inline uint16_t mavlink_msg_flexifunction_set_encode_chan(uint8_t system_
 }
 
 /**
+ * @brief Encode a flexifunction_set struct with provided status structure
+ *
+ * @param system_id ID of this system
+ * @param component_id ID of this component (e.g. 200 for IMU)
+ * @param status MAVLink status structure
+ * @param msg The MAVLink message to compress the data into
+ * @param flexifunction_set C-struct to read the message contents from
+ */
+static inline uint16_t mavlink_msg_flexifunction_set_encode_status(uint8_t system_id, uint8_t component_id, mavlink_status_t* _status, mavlink_message_t* msg, const mavlink_flexifunction_set_t* flexifunction_set)
+{
+    return mavlink_msg_flexifunction_set_pack_status(system_id, component_id, _status, msg,  flexifunction_set->target_system, flexifunction_set->target_component);
+}
+
+/**
  * @brief Send a flexifunction_set message
  * @param chan MAVLink channel to send the message
  *
- * @param target_system System ID
- * @param target_component Component ID
+ * @param target_system  System ID
+ * @param target_component  Component ID
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
@@ -170,7 +220,7 @@ static inline void mavlink_msg_flexifunction_set_send_struct(mavlink_channel_t c
 
 #if MAVLINK_MSG_ID_FLEXIFUNCTION_SET_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This varient of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by re-using
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an
@@ -202,7 +252,7 @@ static inline void mavlink_msg_flexifunction_set_send_buf(mavlink_message_t *msg
 /**
  * @brief Get field target_system from flexifunction_set message
  *
- * @return System ID
+ * @return  System ID
  */
 static inline uint8_t mavlink_msg_flexifunction_set_get_target_system(const mavlink_message_t* msg)
 {
@@ -212,7 +262,7 @@ static inline uint8_t mavlink_msg_flexifunction_set_get_target_system(const mavl
 /**
  * @brief Get field target_component from flexifunction_set message
  *
- * @return Component ID
+ * @return  Component ID
  */
 static inline uint8_t mavlink_msg_flexifunction_set_get_target_component(const mavlink_message_t* msg)
 {

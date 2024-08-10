@@ -10,6 +10,9 @@
 //#include <ESP8266WebServer.h>
 #include <WiFiUdp.h>
 #include "mavlink/common/mavlink.h"
+#include <SoftwareSerial.h>
+
+SoftwareSerial arduSerial(14, 12);
 
 void start_WiFi();
 void start_feeds(void);
@@ -30,7 +33,8 @@ IPAddress Global_IP; //
 
 void setup() {
   delay(1000);
-  Serial.begin(57600);
+  Serial.begin(115200);
+  arduSerial.begin(57600);
   Serial.println();
   Serial.print("Starting Wifi..");
   start_WiFi();
